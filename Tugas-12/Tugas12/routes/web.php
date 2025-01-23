@@ -17,3 +17,7 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [DashboardController::class, 'index'])->name('home'); 
 Route::get('/register', [AuthController::class, 'register'])->name('register'); 
 Route::post('/welcome', [AuthController::class, 'welcome'])->name('welcome'); 
+
+Route::get('/master', function(){
+    return view('layouts.master');
+});

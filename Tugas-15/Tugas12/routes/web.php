@@ -1,0 +1,35 @@
+<?php
+
+use App\Http\Controllers\CastController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', [DashboardController::class, 'index'])->name('home'); 
+Route::get('/register', [AuthController::class, 'register'])->name('register'); 
+Route::post('/welcome', [AuthController::class, 'welcome'])->name('welcome'); 
+
+Route::get('/data-tables', function(){
+    return view('page.data-tables');
+});
+Route::get('/tables', function(){
+    return view('page.tables');
+});
+
+Route::get('/cast/create', [CastController::class, 'create']);
+Route::post('/cast', [CastController::class, 'store']);
+Route::get('/cast', [CastController::class, 'index']);
+Route::get('/cast/{cast_id}', [CastController::class, 'show']);
+Route::get('/cast/{cast_id}/edit', [CastController::class, 'edit']);
+Route::put('/cast/{cast_id}', [CastController::class, 'update']);
+Route::delete('/cast/{cast_id}', [CastController::class, 'destroy']);
